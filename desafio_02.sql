@@ -85,6 +85,11 @@ fecha        /   sum
 
 /*5. ¿Qué día se inscribieron la mayor cantidad de personas y cuántas personas se inscribieron en ese día? */
 
-SELECT fecha, SUM(cantidad) FROM inscritos GROUP BY fecha HAVING SUM(cantidad) = (SELECT SUM(cantidad) FROM inscritos GROUP BY SUM(cantidad) DESC LIMIT 1
+-- SELECT fecha, SUM(cantidad) FROM inscritos GROUP BY fecha HAVING SUM(cantidad) = (SELECT SUM(cantidad) FROM inscritos GROUP BY SUM(cantidad) DESC LIMIT 1
+SELECT fecha, SUM(cantidad) AS total_inscritos
+FROM inscritos
+GROUP BY fecha
+ORDER BY total_inscritos DESC
+LIMIT 1;
 
 -- MUESTRA : 182
